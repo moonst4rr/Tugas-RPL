@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 8 - Class Diagram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">sistem pemesanan makanan online</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">📄 Step1</a></li>
+            <li><a href="step2.html">👤 Step2</a></li>
+            <li><a href="step3.html">⚡ Step3</a></li>
+            <li><a href="step4.html">🔗 Step4</a></li>
+            <li><a href="step5.html">📐 Step5</a></li>
+            <li><a href="step6.html">🎲 Step6</a></li>
+            <li><a href="step7.html">📖 Step7</a></li>
+            <li><a href="step8.html" class="active">🧩 Step8</a></li>
+            <li><a href="step9.html">🔄 Step9</a></li>
+            <li><a href="step10.html">🖥️ Step10</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>🧩 Class Diagram</h1>
+
+    <div class="class-container">
+        
+        <div class="class-box">
+            <div class="class-name">User</div>
+            <div class="class-attrs">
+                - id user<br>
+                - username<br>
+                - password<br>
+                - email<br>
+                - no telp
+            </div>
+            <div class="class-methods">
+                + login()<br>
+                + register()<br>
+                + viewprofile()
+            </div>
+        </div>
+
+        
+        <div class="class-box">
+            <div class="class-name">Menu</div>
+            <div class="class-attrs">
+                - id menu<br>
+                - nama menu<br>
+                - harga<br>
+                - gambar
+            </div>
+            <div class="class-methods">
+                + displaymenu()<br>
+                + getdetail()
+            </div>
+        </div>
+
+        
+        <div class="class-box">
+            <div class="class-name">Order</div>
+            <div class="class-attrs">
+                - id order<br>
+                - tgl order<br>
+                - total harga<br>
+                - status<br>
+                - alamat
+            </div>
+            <div class="class-methods">
+                + create order()<br>
+                + calculate total()<br>
+                + update status()
+            </div>
+        </div>
+
+        
+        <div class="class-box">
+            <div class="class-name">payment</div>
+            <div class="class-attrs">
+                - id pay<br>
+                - metode<br>
+                - jumlah<br>
+                - status bayar
+            </div>
+            <div class="class-methods">
+                + process payment()<br>
+                + verify payment()
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="step7.html" class="btn btn-prev">Sebelumnya</a>
+        <a href="step9.html" class="btn btn-next">Selanjutnya</a>
+    </div>
+</div>
+
+<footer>
+  <p>Nama : Fitri Nasyirah 
+    <br>
+    NIM : 253303611207</p>
+</footer>
+
+
+</body>
+</html>

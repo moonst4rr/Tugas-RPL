@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pemesanan - Rasa Rasa</title>
+  <link rel="stylesheet" href="style copy.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">Indonesiantaste</div>
+  <nav>
+    <a href="login.html">Masuk</a>
+    <a href="index.html">Home</a>
+    <a href="produk.html">Produk</a>
+    <a href="keranjang.html">pesan Sekarang</a>  
+    <a href="tentang.html">Tentang kami</a>
+    <a href="kontak.html">Kontak</a>
+    <a href="lokasi.html">lokasi</a>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>🛒 Keranjang Belanja</h2>
+
+  <div class="order-container">
+
+  
+    <div class="menu-list">
+      <h3>Daftar Menu</h3>
+
+      <div class="menu-item">
+        <div>
+          <h4>Ayam Goreng</h4>
+          <p>Rp 30.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Ayam Goreng', 30000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Lontong Sayur</h4>
+          <p>Rp25.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Lontong Sayur', 25000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Lontong Telur</h4>
+          <p>Rp 28.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Lontong Telur', 28000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Gado Gado</h4>
+          <p>Rp 32.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Gado Gado', 32000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Bala Bala</h4>
+          <p>Rp 25.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Bala Bala', 25000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Pecel</h4>
+          <p>Rp 27.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Pecel', 27000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Tahu Isi</h4>
+          <p>Rp 25.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Tahu Isi', 25000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Nasi Gurih Telur</h4>
+          <p>Rp 35.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Nasi Gurih Telur', 35000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Nasi Gurih</h4>
+          <p>Rp 30.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Nasi Gurih', 30000)">+</button>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <h4>Cilok</h4>
+          <p>Rp 25.000</p>
+        </div>
+        <button class="btn-tambah" onclick="tambahKeKeranjang('Cilok', 25000)">+</button>
+      </div>
+
+    </div>
+
+  
+    <div class="order-form">
+      <h3>Isi Keranjang</h3>
+      <div id="listKeranjang"></div>
+
+      <div class="total-box">
+        <h4>Total Bayar: <span id="total">Rp 0</span></h4>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label>Nama Pemesan</label>
+        <input type="text" id="nama" required>
+      </div>
+
+      <div class="form-group">
+        <label>Nomor HP</label>
+        <input type="text" id="hp" required>
+      </div>
+
+      <div class="form-group">
+        <label>Alamat Lengkap</label>
+        <textarea id="alamat" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Metode Pembayaran</label>
+        <select id="bayar">
+          <option value="Cash">Qris</option>
+          <option value="COD">Bayar di Tempat (COD)</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="pesanSekarang()">Pesan Sekarang</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Nama : Fitri Nasyirah 
+    <br>
+    NIM : 253303611207</p>
+</footer>
+
+<script>
+let keranjang = [];
+
+function tambahKeKeranjang(nama, harga) {
+  let item = keranjang.find(i => i.nama === nama);
+  if (item) {
+    item.jumlah += 1;
+  } else {
+    keranjang.push({ nama, harga, jumlah: 1 });
+  }
+  tampilkanKeranjang();
+}
+
+function ubahJumlah(nama, operasi) {
+  let item = keranjang.find(i => i.nama === nama);
+  if (item) {
+    if (operasi === 'tambah') {
+      item.jumlah += 1;
+    } else {
+      item.jumlah -= 1;
+      if (item.jumlah <= 0) {
+        keranjang = keranjang.filter(i => i.nama !== nama);
+      }
+    }
+    tampilkanKeranjang();
+  }
+}
+
+function tampilkanKeranjang() {
+  const listEl = document.getElementById('listKeranjang');
+  listEl.innerHTML = '';
+  let total = 0;
+
+  keranjang.forEach(item => {
+    const subtotal = item.harga * item.jumlah;
+    total += subtotal;
+
+    const div = document.createElement('div');
+    div.className = 'item-keranjang';
+    div.innerHTML = `
+      <div>
+        <strong>${item.nama}</strong><br>
+        <small>${item.jumlah} x Rp ${item.harga.toLocaleString('id-ID')}</small>
+      </div>
+      <div class="ctrl">
+        <button onclick="ubahJumlah('${item.nama}', 'kurang')">-</button>
+        <span>${item.jumlah}</span>
+        <button onclick="ubahJumlah('${item.nama}', 'tambah')">+</button>
+      </div>
+    `;
+    listEl.appendChild(div);
+  });
+
+  document.getElementById('total').innerText = "Rp " + total.toLocaleString('id-ID');
+}
+
+function pesanSekarang() {
+  const nama = document.getElementById('nama').value;
+  const hp = document.getElementById('hp').value;
+  const alamat = document.getElementById('alamat').value;
+  const bayar = document.getElementById('bayar').value;
+  const total = document.getElementById('total').innerText;
+
+  if (!nama || !hp || !alamat) {
+    alert("Mohon isi data lengkap!");
+    return;
+  }
+
+  if (keranjang.length === 0) {
+    alert("Keranjang masih kosong! Silakan pilih menu.");
+    return;
+  }
+
+  alert(`Pesanan Berhasil!\n\nTotal: ${total}\nMetode: ${bayar}\nTerima kasih sudah memesan.`);
+  keranjang = [];
+  tampilkanKeranjang();
+  document.getElementById('nama').value = '';
+  document.getElementById('hp').value = '';
+  document.getElementById('alamat').value = '';
+}
+</script>
+
+</body>
+</html>

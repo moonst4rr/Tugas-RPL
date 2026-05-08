@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 7 - Sequence Diagram</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">sistem pemesanan makanan online</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">📄 Step1</a></li>
+            <li><a href="step2.html">👤 Step2</a></li>
+            <li><a href="step3.html">⚡ Step3</a></li>
+            <li><a href="step4.html">🔗 Step4</a></li>
+            <li><a href="step5.html">📐 Step5</a></li>
+            <li><a href="step6.html">🎲 Step6</a></li>
+            <li><a href="step7.html" class="active">📖 Step7</a></li>
+            <li><a href="step8.html">🧩 Step8</a></li>
+            <li><a href="step9.html">🔄 Step9</a></li>
+            <li><a href="step10.html">🖥️ Step10</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>📄 Sequence Diagram</h1>
+
+    <div class="seq-diagram">
+        
+        <div class="seq-header">Pelanggan</div>
+        <div class="seq-header">Sistem</div>
+        <div class="seq-header">Database</div>
+        <div class="seq-header">Admin/Resto</div>
+
+        
+        <div class="seq-line"></div>
+        <div class="seq-line"></div>
+        <div class="seq-line"></div>
+        <div class="seq-line"></div>
+
+        
+        <div class="seq-row">
+            <div class="seq-actor">Buka Aplikasi</div>
+            <div class="seq-action">→ Tampilkan Halaman</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Login</div>
+            <div class="seq-action">→ Validasi Data</div>
+            <div class="seq-action">← Cek Data User</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Lihat Menu</div>
+            <div class="seq-action">→ Ambil Data Menu</div>
+            <div class="seq-action">← Query Menu</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Pilih Makanan</div>
+            <div class="seq-action">→ Tambah ke Keranjang</div>
+            <div class="seq-action">→ Hitung Total</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Checkout</div>
+            <div class="seq-action">→ Proses Order</div>
+            <div class="seq-action">← Simpan Order</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Bayar</div>
+            <div class="seq-action">→ Verifikasi Pembayaran</div>
+            <div class="seq-action">← Catat Transaksi</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Tunggu</div>
+            <div class="seq-action">→ Update Status</div>
+            <div class="seq-action">→ Notif ke Resto</div>
+        </div>
+
+        <div class="seq-row">
+            <div class="seq-actor">Terima & Ulasan</div>
+            <div class="seq-action">→ Simpan Ulasan</div>
+            <div class="seq-action">← Simpan Rating</div>
+        </div>
+
+    </div>
+
+    <div class="nav-buttons">
+        <a href="step6.html" class="btn btn-prev">Sebelumnya</a>
+        <a href="step8.html" class="btn btn-next">Selanjutnya</a>
+    </div>
+</div>
+
+<footer>
+  <p>Nama : Fitri Nasyirah 
+    <br>
+    NIM : 253303611207</p>
+</footer>
+
+
+</body>
+</html>
+
+        

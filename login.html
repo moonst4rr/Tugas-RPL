@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Daftar - Rasa Rasa</title>
+  <link rel="stylesheet" href="style copy.css">
+  <style>
+    /* STYLE TAB */
+    .tab-container {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-btn.active {
+      border-bottom: 3px solid #007bff;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .form-content {
+      display: none;
+    }
+    .form-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-box">
+
+      <!-- TOMBOL PILIHAN -->
+      <div class="tab-container">
+        <button class="tab-btn active" onclick="openTab('login')">Login</button>
+        <button class="tab-btn" onclick="openTab('daftar')">Daftar Akun</button>
+      </div>
+
+      <!-- FORM LOGIN -->
+      <div id="login" class="form-content active">
+        <h2>Login</h2>
+        <p>Masuk ke akun Rasa Rasa</p>
+
+        <form onsubmit="loginUser(event)">
+          <div class="form-group">
+            <input type="text" id="username_login" required>
+            <label>Username</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="password_login" required>
+            <label>Password</label>
+          </div>
+          <button class="btn" type="submit">Login</button>
+          <p id="error_login" style="color:red; margin-top:10px;"></p>
+        </form>
+      </div>
+
+      <!-- FORM DAFTAR -->
+      <div id="daftar" class="form-content">
+        <h2>Daftar Akun</h2>
+        <p>Buat akun baru di Rasa Rasa</p>
+
+        <form onsubmit="daftarUser(event)">
+          <div class="form-group">
+            <input type="text" id="username_daftar" required>
+            <label>Username</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="password_daftar" required>
+            <label>Password</label>
+          </div>
+          <button class="btn" type="submit">Daftar Sekarang</button>
+          <p id="pesan_daftar" style="color:green; margin-top:10px;"></p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+// FUNGSI PINDAH TAB
+function openTab(tabName) {
+  const contents = document.getElementsByClassName("form-content");
+  const buttons = document.getElementsByClassName("tab-btn");
+
+  // Sembunyikan semua
+  for (let i = 0; i < contents.length; i++) {
+    contents[i].classList.remove("active");
+    buttons[i].classList.remove("active");
+  }
+
+  // Tampilkan yang dipilih
+  document.getElementById(tabName).classList.add("active");
+  event.currentTarget.classList.add("active");
+}
+
+// FUNGSI LOGIN
+function loginUser(event) {
+  event.preventDefault();
+  const user = document.getElementById("username_login").value;
+  const pass = document.getElementById("password_login").value;
+
+  const savedUser = localStorage.getItem("user");
+  const savedPass = localStorage.getItem("pass");
+
+  if (savedUser === null) {
+    document.getElementById("error_login").innerText = "Anda belum punya akun! Silakan Daftar dulu.";
+    return;
+  }
+
+  if (user === savedUser && pass === savedPass) {
+    alert("Login berhasil!");
+    window.location.href = "index copy.html";
+  } else {
+    document.getElementById("error_login").innerText = "Username atau Password salah!";
+  }
+}
+
+// FUNGSI DAFTAR
+function daftarUser(event) {
+  event.preventDefault();
+  const user = document.getElementById("username_daftar").value;
+  const pass = document.getElementById("password_daftar").value;
+
+  localStorage.setItem("user", user);
+  localStorage.setItem("pass", pass);
+
+  document.getElementById("pesan_daftar").innerText = "Daftar Berhasil! Silakan klik tab Login di atas.";
+  
+  // Otomatis pindah ke tab login
+  setTimeout(() => {
+    openTab('login');
+  }, 1000);
+}
+</script>
+<footer>
+<p>Nama : Fitri Nasyirah 
+    <br>
+    NIM : 253303611207</p>
+</footer>
+
+</body>
+</html>
